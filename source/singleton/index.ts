@@ -1,8 +1,5 @@
-import { Instance } from "./interfaces/Instance";
-
-class Person implements Instance<Person>{
-    static instance: any;
-    
+class Person  {
+    static instance : Person;
     constructor() {
         if (typeof Person.instance === 'object') {
             return Person.instance;
