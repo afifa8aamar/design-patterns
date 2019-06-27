@@ -1,0 +1,1 @@
+export { IKind } from "./kind"
