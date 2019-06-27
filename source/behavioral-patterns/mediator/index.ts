@@ -1,19 +1,22 @@
 class TrafficTower {
+    airplanes: Airplane[];
 
     constructor() {
         this.airplanes = [];
     }
 
     requestPositions() {
-        return this.airplanes.map(airplane => {
+        return this.airplanes.map((airplane: { position: any; }) => {
             return airplane.position;
         });
     }
 }
 
 class Airplane {
+    position: string;
+    trafficTower: TrafficTower;
 
-    constructor(position, trafficTower) {
+    constructor(position: string, trafficTower: TrafficTower) {
         this.position = position;
         this.trafficTower = trafficTower;
         this.trafficTower.airplanes.push(this);
@@ -23,6 +26,7 @@ class Airplane {
         return this.trafficTower.requestPositions();
     }
 }
+
 
 export {
     TrafficTower,

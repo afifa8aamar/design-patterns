@@ -1,29 +1,33 @@
+import { IMemento } from "./interfaces/memento";
+
 class Memento {
-    constructor(value) {
+    value: Memento;
+    constructor(value: Memento) {
         this.value = value;
     }
 }
 
 const originator = {
-    store: function(val) {
+    store: function(val: Memento) {
         return new Memento(val);
     },
-    restore: function(memento) {
+    restore: function(memento: Memento) {
         return memento.value;
     }
 };
 
-class Caretaker {
+class Caretaker implements IMemento<Caretaker>{
+    public values: Array<Caretaker>;
 
     constructor() {
         this.values = [];
     }
 
-    addMemento(memento) {
+    public addMemento(memento: Caretaker) {
         this.values.push(memento);
     }
 
-    getMemento(index) {
+    public getMemento(index: number) {
         return this.values[index];
     }
 }

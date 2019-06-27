@@ -1,7 +1,8 @@
-class Iterator {
+class Iterator<T> {
     index: number;
+    elements: Array<T> ;
 
-    constructor(el) {
+    constructor(el: Array<T>) {
         this.index = 0;
         this.elements = el;
     }

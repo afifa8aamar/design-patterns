@@ -1,4 +1,5 @@
 class Product {
+    price: number;
     constructor() {
         this.price = 0;
         this.actions = [];
