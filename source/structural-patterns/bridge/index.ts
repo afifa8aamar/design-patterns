@@ -1,34 +1,36 @@
 class Printer {
-    constructor(ink) {
+    public ink: Ink;
+    constructor(ink: Ink) {
         this.ink = ink;
     }
 }
 
 class EpsonPrinter extends Printer {
-    constructor(ink) {
+    constructor(ink: Ink) {
         super(ink);
     }
 
-    print() {
+    public print() {
         return "Printer: Epson, Ink: " + this.ink.get();
     }
 }
 
 class HPprinter extends Printer {
-    constructor(ink) {
+    constructor(ink: Ink) {
         super(ink);
     }
 
-    print() {
+    public print() {
         return "Printer: HP, Ink: " + this.ink.get();
     }
 }
 
 class Ink {
-    constructor(type) {
+    public type: string;
+    constructor(type: string) {
         this.type = type;
     }
-    get() {
+    public get() {
         return this.type;
     }
 }

@@ -1,11 +1,14 @@
 class ShopFacade {
+    discount: Discount;
+    shipping: Shipping;
+    fees: Fees;
     constructor() {
         this.discount = new Discount();
         this.shipping = new Shipping();
         this.fees = new Fees();
     }
 
-    calc(price) {
+    public calc(price: number) {
         price = this.discount.calc(price);
         price = this.fees.calc(price);
         price += this.shipping.calc();
@@ -15,20 +18,20 @@ class ShopFacade {
 
 class Discount {
 
-    calc(value) {
+    public calc(value: number) {
         return value * 0.9;
     }
 }
 
 class Shipping {
-    calc() {
+    public calc() {
         return 5;
     }
 }
 
 class Fees {
 
-    calc(value) {
+    public calc(value: number) {
         return value * 1.05;
     }
 }

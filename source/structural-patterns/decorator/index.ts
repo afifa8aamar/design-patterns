@@ -1,8 +1,9 @@
 class Pasta {
+    public price: number;
     constructor() {
         this.price = 0;
     }
-    getPrice() {
+    public getPrice() {
         return this.price;
     }
 }
@@ -15,32 +16,33 @@ class Penne extends Pasta {
 }
 
 class PastaDecorator extends Pasta {
-    constructor(pasta) {
+    public pasta: Pasta;
+    constructor(pasta: Pasta) {
         super();
         this.pasta = pasta;
     }
 
-    getPrice() {
+    public getPrice() {
         return this.pasta.getPrice();
     }
 }
 
 class SauceDecorator extends PastaDecorator {
-    constructor(pasta) {
+    constructor(pasta: Pasta) {
         super(pasta);
     }
 
-    getPrice() {
+    public getPrice() {
         return super.getPrice() + 5;
     }
 }
 
 class CheeseDecorator extends PastaDecorator {
-    constructor(pasta) {
+    constructor(pasta: Pasta) {
         super(pasta);
     }
 
-    getPrice() {
+    public getPrice() {
         return super.getPrice() + 3;
     }
 }

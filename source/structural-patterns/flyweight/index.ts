@@ -1,14 +1,16 @@
 class Color {
-    constructor(name) {
+    public name: string;
+    constructor(name: string) {
         this.name = name
     }
 }
 
 class colorFactory {
-    constructor(name) {
+    static colors ;
+    constructor(name: string) {
         this.colors = {};
     }
-    create(name) {
+    public create(name: string) {
         let color = this.colors[name];
         if (color) return color;
         this.colors[name] = new Color(name);

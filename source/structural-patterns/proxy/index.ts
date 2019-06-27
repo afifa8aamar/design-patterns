@@ -1,20 +1,22 @@
 class Car {
-    drive() {
+    public drive() {
         return "driving";
     };
 }
 
 class CarProxy {
-    constructor(driver) {
+    public driver: Driver;
+    constructor(driver: Driver) {
         this.driver = driver;
     }
-    drive() {
+    public drive() {
         return (this.driver.age < 18) ? "too young to drive" : new Car().drive();
     }
 }
 
 class Driver {
-    constructor(age) {
+    public age: number;
+    constructor(age: number) {
         this.age = age;
     }
 }

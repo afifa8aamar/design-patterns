@@ -1,32 +1,35 @@
 //Equipment
 class Equipment {
+    price: number;
+    name: string;
 
-    getPrice() {
+    public getPrice() {
         return this.price || 0;
     }
 
-    getName() {
+    public getName() {
         return this.name;
     }
 
-    setName(name) {
+    public setName(name: string) {
         this.name = name;
     }
 }
 
 // --- composite ---
 class Composite extends Equipment {
+    public equipments: Array<Equipment>;
 
     constructor() {
         super();
         this.equipments = [];
     }
 
-    add(equipment) {
+    public add(equipment: Equipment) {
         this.equipments.push(equipment);
     }
 
-    getPrice() {
+    public getPrice() {
         return this.equipments.map(equipment => {
             return equipment.getPrice();
         }).reduce((a, b) => {

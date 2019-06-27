@@ -1,5 +1,5 @@
 class Soldier {
-    level: number;
+    public level: number;
     constructor(level: number) {
         this.level = level;
     }
@@ -10,7 +10,7 @@ class Soldier {
 }
 
 class Jedi {
-    level: number;
+    public level: number;
     constructor(level: number) {
         this.level = level;
     }
@@ -21,7 +21,7 @@ class Jedi {
 }
 
 class JediAdapter {
-    jedi: Jedi;
+    public jedi: Jedi;
     constructor(jedi: Jedi) {
         this.jedi = jedi;
     }
