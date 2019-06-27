@@ -1,6 +1,8 @@
-class Cockpit {
+type TCommand = OnCommand | OffCommand ;
+class Cockpit{
+    command: TCommand;
 
-    constructor(command) {
+    constructor(command : TCommand) {
         this.command = command;
     }
 
@@ -10,6 +12,7 @@ class Cockpit {
 }
 
 class Turbine {
+    state: boolean;
 
     constructor() {
         this.state = false;
@@ -25,8 +28,9 @@ class Turbine {
 }
 
 class OnCommand {
+    turbine: Turbine;
 
-    constructor(turbine) {
+    constructor(turbine: Turbine) {
         this.turbine = turbine;
     }
 
@@ -36,8 +40,9 @@ class OnCommand {
 }
 
 class OffCommand {
+    turbine: Turbine;
 
-    constructor(turbine) {
+    constructor(turbine: Turbine) {
         this.turbine = turbine;
     }
 

@@ -1,5 +1,7 @@
-import {IProduct} from "./interfaces/product"
-import { IDiscount } from "./interfaces/discount";
+import { IProduct } from "./interfaces/product";
+
+type TDiscount = NumberDiscount | PriceDiscount | NoneDiscount | null;
+
 class ShoppingCart {
     products: IProduct[];
 
@@ -24,14 +26,14 @@ class Discount {
     };
 }
 
-class NumberDiscount implements IDiscount<NumberDiscount> {
-    next: NumberDiscount | null;
+class NumberDiscount {
+    next: TDiscount;
 
     constructor() {
         this.next = null;
     }
 
-    setNext(fn: NumberDiscount) {
+    setNext(fn: TDiscount) {
         this.next = fn;
     };
 
@@ -39,34 +41,42 @@ class NumberDiscount implements IDiscount<NumberDiscount> {
         let result = 0;
         if (products.length > 3)
             result = 0.05;
-        let temp: NumberDiscount = <NumberDiscount>this.next;
-        return result + temp.exec(products);
+        if (this.next){
+            return result + this.next.exec(products);
+        } else {
+            return result;
+        }
     };
 }
 
-class PriceDiscount implements IDiscount<PriceDiscount> {
-    next : PriceDiscount | null;
+class PriceDiscount {
+    next: TDiscount;
+
     constructor() {
         this.next = null;
     }
 
-    setNext(fn) {
+    setNext(fn: TDiscount) {
         this.next = fn;
     };
 
-    exec(products : IProduct[]) {
+    exec(products: IProduct[]):number {
         let result = 0;
         let total = products.reduce((a: number, b: number) => a + b);
 
         if (total >= 500)
             result = 0.1;
 
-        return result + this.next.exec(products);
+        if (this.next){
+            return result + this.next.exec(products);
+        } else {
+            return result;
+        }
     };
 }
 
 class NoneDiscount {
-    exec() {
+    exec():number {
         return 0;
     };
 }
