@@ -1,29 +1,32 @@
 class Soldier {
-    constructor(level) {
+    level: number;
+    constructor(level: number) {
         this.level = level;
     }
 
-    attack() {
+    public attack() {
         return this.level * 1;
     }
 }
 
 class Jedi {
-    constructor(level) {
+    level: number;
+    constructor(level: number) {
         this.level = level;
     }
 
-    attackWithSaber() {
+    public attackWithSaber() {
         return this.level * 100;
     }
 }
 
 class JediAdapter {
-    constructor(jedi) {
+    jedi: Jedi;
+    constructor(jedi: Jedi) {
         this.jedi = jedi;
     }
 
-    attack() {
+    public attack() {
         return this.jedi.attackWithSaber();
     }
 }
