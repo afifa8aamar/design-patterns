@@ -1,4 +1,4 @@
-import { IBuilder, IRequest } from "./interfaces/";
+import { IBuilder, IRequest } from "./interfaces";
 
 class Request implements IRequest {
     public url: string;
