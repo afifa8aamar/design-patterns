@@ -1,17 +1,20 @@
+import {IProduct} from "./interfaces/product"
+import { IDiscount } from "./interfaces/discount";
 class ShoppingCart {
+    products: IProduct[];
 
     constructor() {
         this.products = [];
     }
 
-    addProduct(p) {
+    addProduct(p: IProduct) {
         this.products.push(p);
     };
 }
 
 class Discount {
 
-    calc(products) {
+    calc(products: IProduct[]) {
         let ndiscount = new NumberDiscount();
         let pdiscount = new PriceDiscount();
         let none = new NoneDiscount();
@@ -21,27 +24,28 @@ class Discount {
     };
 }
 
-class NumberDiscount {
+class NumberDiscount implements IDiscount<NumberDiscount> {
+    next: NumberDiscount | null;
 
     constructor() {
         this.next = null;
     }
 
-    setNext(fn) {
+    setNext(fn: NumberDiscount) {
         this.next = fn;
     };
 
-    exec(products) {
+    exec(products: IProduct[]): number {
         let result = 0;
         if (products.length > 3)
             result = 0.05;
-
-        return result + this.next.exec(products);
+        let temp: NumberDiscount = <NumberDiscount>this.next;
+        return result + temp.exec(products);
     };
 }
 
-class PriceDiscount {
-
+class PriceDiscount implements IDiscount<PriceDiscount> {
+    next : PriceDiscount | null;
     constructor() {
         this.next = null;
     }
@@ -50,9 +54,9 @@ class PriceDiscount {
         this.next = fn;
     };
 
-    exec(products) {
+    exec(products : IProduct[]) {
         let result = 0;
-        let total = products.reduce((a, b) => a + b);
+        let total = products.reduce((a: number, b: number) => a + b);
 
         if (total >= 500)
             result = 0.1;

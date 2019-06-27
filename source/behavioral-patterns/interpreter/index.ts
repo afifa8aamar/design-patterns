@@ -1,6 +1,7 @@
 class Sum {
-
-    constructor(left, right) {
+    left: Num;
+    right: Num;
+    constructor(left: Num, right: Num) {
         this.left = left;
         this.right = right;
     }
@@ -11,8 +12,10 @@ class Sum {
 }
 
 class Min {
+    left: Num;
+    right: Num;
 
-    constructor(left, right) {
+    constructor(left: Num, right: Num) {
         this.left = left;
         this.right = right;
     }
@@ -23,8 +26,9 @@ class Min {
 }
 
 class Num {
+    val: number;
 
-    constructor(val) {
+    constructor(val: number) {
         this.val = val;
     }
 

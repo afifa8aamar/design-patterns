@@ -1,4 +1,5 @@
 class Iterator {
+    index: number;
 
     constructor(el) {
         this.index = 0;
