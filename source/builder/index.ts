@@ -1,39 +1,39 @@
-import { IRequest , IBuilder } from "./interfaces/";
+import { IBuilder, IRequest } from "./interfaces/";
 
 class Request implements IRequest {
-    url: string;
-    method: string;
-    payload: object;
-    
+    public url: string;
+    public method: string;
+    public payload: object;
+
     constructor() {
-        this.url = '';
-        this.method = '';
+        this.url = "";
+        this.method = "";
         this.payload = {};
     }
 }
 
 class RequestBuilder implements IBuilder<RequestBuilder> {
-    request: IRequest;
+    public request: IRequest;
     constructor() {
         this.request = new Request();
     }
 
-    forUrl(url: string) {
+    public forUrl(url: string) {
         this.request.url = url;
         return this;
     }
 
-    useMethod(method: string) {
+    public useMethod(method: string) {
         this.request.method = method;
         return this;
     }
 
-    payload(payload: object) {
+    public payload(payload: object) {
         this.request.payload = payload;
         return this;
     }
 
-    build() {
+    public build() {
         return this.request;
     }
 

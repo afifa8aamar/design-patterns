@@ -1,1 +1,1 @@
-export { IBMW } from "./BMW"
+export { IBMW } from "./BMW";

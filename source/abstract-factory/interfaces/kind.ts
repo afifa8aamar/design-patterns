@@ -1,4 +1,3 @@
 export interface IKind {
-    
-    info() : void 
+    info(): void ;
 }

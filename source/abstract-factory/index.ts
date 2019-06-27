@@ -1,7 +1,7 @@
 import { IKind } from "./interfaces";
 
 function droidProducer(kind: string) {
-    if (kind === 'battle'){
+    if (kind === "battle") {
         return battleDroidFactory;
     }
 
@@ -16,14 +16,14 @@ function pilotDroidFactory() {
     return new Rx24();
 }
 
-class B1 implements IKind{
-    info() {
+class B1 implements IKind {
+    public info() {
         return "B1, Battle Droid";
     }
 }
 
 class Rx24 implements IKind {
-    info() {
+    public info() {
         return "Rx24, Pilot Droid";
     }
 }

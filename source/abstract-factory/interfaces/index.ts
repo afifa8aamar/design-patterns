@@ -1,1 +1,1 @@
-export { IKind } from "./kind"
+export { IKind } from "./kind" ;

@@ -1,7 +1,7 @@
 class Person  {
-    static instance : Person;
+    public static instance: Person;
     constructor() {
-        if (typeof Person.instance === 'object') {
+        if (typeof Person.instance === "object") {
             return Person.instance;
         }
         Person.instance = this;
